@@ -1,0 +1,36 @@
+.banner_area {
+    border-width: 0;
+    height: 100px;
+    background-color: #FAEBEF;
+}
+
+.banner {
+    vertical-align: middle;
+    display: table-cell;
+    height: 100px;
+    width: 260px;
+}
+
+.banner_title {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 189px;
+    margin-right: 10px;
+    margin-top: 10px;
+    float: left;
+}
+
+.banner_title > span {
+    font-family: "BM JUA_OTF";
+    color: #333333;
+}
+
+.banner_icon {
+    float: right;
+    width: 40px;
+    margin-left: 10px;
+}
+
+.banner_icon > img {
+    height: 40px;
+}

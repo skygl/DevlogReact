@@ -3,7 +3,84 @@
     height: 10px;
 }
 
-.date_move_btn {
+.date_btn {
     background-color: transparent;
-    border-width: 0px;
+    border-width: 0;
+}
+
+.calendar_icon {
+    float: left;
+    width: 15px;
+    margin-left: 5px;
+}
+
+.date_title {
+    font-family: "BM JUA_OTF";
+    float: left;
+}
+
+.calendar_box {
+    margin: 0 10px 10px 10px;
+}
+
+.row {
+    display: flex;
+    cursor: pointer;
+}
+
+.row:first-child {
+    cursor: initial;
+}
+
+.row:first-child.box {
+    font-weight: bold;
+}
+
+.box {
+    position: relative;
+    display: inline-flex;
+    width: calc(100% / 7);
+    height: 0;
+    padding-bottom: calc(100% / 7);
+    font-size: 11px;
+}
+
+.box:first-child {
+    color: red;
+}
+
+.box:last-child {
+    color: #588dff;
+}
+
+.box.grayed {
+    color: gray;
+}
+
+.box.selected > span.text {
+    background-color: #588dff;
+    color: white;
+}
+
+.box > span.text {
+    border-radius: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 60%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.calendar_title_table {
+    margin: 0 auto;
+    font-family: "BM JUA_OTF";
+}
+
+.calendar_title {
+    font-size: 13px;
+    vertical-align: 11%;
 }

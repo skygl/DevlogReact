@@ -10,6 +10,11 @@ function App() {
         <div className="App">
             <Header/>
             <Banner/>
+            <div className={"content_area"}>
+                <div className={"cards_area"}>
+
+                </div>
+            </div>
         </div>
     );
 }

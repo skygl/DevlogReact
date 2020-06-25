@@ -1,0 +1,9 @@
+.date_move {
+    width: 10px;
+    height: 10px;
+}
+
+.date_move_btn {
+    background-color: transparent;
+    border-width: 0px;
+}

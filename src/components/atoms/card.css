@@ -1,0 +1,43 @@
+.card_image {
+    width: 100%;
+    height: auto;
+    max-height: 50vw;
+    object-fit: cover;
+    margin-bottom: 5px;
+    border-radius: 2px;
+}
+
+.card {
+    width: 90%;
+    background-color: #FFFFFF;
+    font-family: 'BM HANNA Air OTF';
+    padding: 10px;
+    box-shadow: 2px 2px 5px #d7d7d7;
+    margin: 0 auto 2rem;
+    border-radius: 5px;
+}
+
+h3 {
+    text-align: left;
+}
+
+.tags {
+    display: flex;
+    flex-flow: wrap;
+}
+
+.tag {
+    box-shadow: 1px 1px 3px #d7d7d7;
+    background: #ffc58d;
+    border-radius: 6px;
+    display: inline-block;
+    cursor: pointer;
+    color: #FFFFFF;
+    font-family: "BM HANNA Air OTF";
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 5px 10px;
+    text-decoration: none;
+    margin-right: 5px;
+    margin-top: 5px;
+}

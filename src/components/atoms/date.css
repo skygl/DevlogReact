@@ -1,3 +1,18 @@
+.date_area {
+    border-radius: 5px 5px 0 0;
+    padding: 10px 0;
+}
+
+hr {
+    width: 80%;
+}
+
+@media (min-width: 768px) {
+    hr {
+        width: 40%;
+    }
+}
+
 .date_move {
     width: 10px;
     height: 10px;
@@ -20,7 +35,8 @@
 }
 
 .calendar_box {
-    margin: 0 10px 10px 10px;
+    max-width: 300px;
+    margin: 0 auto;
 }
 
 .row {

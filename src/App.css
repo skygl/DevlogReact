@@ -45,4 +45,5 @@
 .cards_area {
     background-color: #F0ECE1;
     padding: 15px;
+    border-radius: 0 0 5px 5px;
 }

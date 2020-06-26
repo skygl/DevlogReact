@@ -55,49 +55,51 @@ const Calendar = ({date, changeDate}) => {
     };
 
     return (
-        <div className={"calendar_box"}>
+        <>
             <hr/>
-            <table className={"calendar_title_table"}>
-                <tbody>
-                <tr>
-                    <td>
-                        <Prev date={calendarDate} changeDate={changePrevMonth}/>
-                    </td>
-                    <td>
-                        <span
-                            className="calendar_title">{[months[calendarDate.getMonth()], calendarDate.getFullYear()].join(" ")}</span>
-                    </td>
-                    <td>
-                        <Next date={calendarDate} changeDate={changeNextMonth}/>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            <div className="row">
-                <div className="box">
-                    <span className="text">SUN</span>
+            <div className={"calendar_box"}>
+                <table className={"calendar_title_table"}>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <Prev date={calendarDate} changeDate={changePrevMonth}/>
+                        </td>
+                        <td>
+                            <span
+                                className="calendar_title">{[months[calendarDate.getMonth()], calendarDate.getFullYear()].join(" ")}</span>
+                        </td>
+                        <td>
+                            <Next date={calendarDate} changeDate={changeNextMonth}/>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div className="row">
+                    <div className="box">
+                        <span className="text">SUN</span>
+                    </div>
+                    <div className="box">
+                        <span className="text">MON</span>
+                    </div>
+                    <div className="box">
+                        <span className="text">TUE</span>
+                    </div>
+                    <div className="box">
+                        <span className="text">WED</span>
+                    </div>
+                    <div className="box">
+                        <span className="text">THU</span>
+                    </div>
+                    <div className="box">
+                        <span className="text">FRI</span>
+                    </div>
+                    <div className="box">
+                        <span className="text">SAT</span>
+                    </div>
                 </div>
-                <div className="box">
-                    <span className="text">MON</span>
-                </div>
-                <div className="box">
-                    <span className="text">TUE</span>
-                </div>
-                <div className="box">
-                    <span className="text">WED</span>
-                </div>
-                <div className="box">
-                    <span className="text">THU</span>
-                </div>
-                <div className="box">
-                    <span className="text">FRI</span>
-                </div>
-                <div className="box">
-                    <span className="text">SAT</span>
-                </div>
+                {generate()}
             </div>
-            {generate()}
-        </div>
+        </>
     )
 };
 

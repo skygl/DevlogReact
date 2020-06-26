@@ -1,5 +1,11 @@
 import React from "react";
 import Card from "../components/molecules/card";
+import Masonry from 'react-masonry-component';
+
+const masonryOptions = {
+    transitionDuration: 0,
+    gutter: 20,
+};
 
 const Cards = ({cards}) => {
 
@@ -13,7 +19,9 @@ const Cards = ({cards}) => {
 
     return (
         <div>
-            {generateCards(cards)}
+            <Masonry className={"masonry_view"} options={masonryOptions}>
+                {generateCards(cards)}
+            </Masonry>
         </div>
     )
 };

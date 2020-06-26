@@ -8,13 +8,33 @@
 }
 
 .card {
-    width: 90%;
+    width: calc(100% - 30px);
     background-color: #FFFFFF;
     font-family: 'BM HANNA Air OTF';
     padding: 10px;
     box-shadow: 2px 2px 5px #d7d7d7;
-    margin: 0 auto 2rem;
     border-radius: 5px;
+    margin: 0 auto 2rem 5px;
+}
+
+@media (min-width: 768px) {
+    .card {
+        max-width: calc(100% / 2 - 40px);
+    }
+
+    .card_image {
+        max-height: 40vw;
+    }
+}
+
+@media (min-width: 1024px) {
+    .card {
+        max-width: calc(100% / 4 - 40px);
+    }
+
+    .card_image {
+        max-height: 20vw;
+    }
 }
 
 h3 {

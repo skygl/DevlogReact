@@ -1,5 +1,5 @@
 import React from "react";
-import "../atoms/card.css";
+import "../../styles/css/card.css";
 import CardImage from "../atoms/cardImage";
 import CardDescription from "../atoms/cardDescription";
 

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Header from "./templates/header";
 import Banner from "./templates/banner";
-import './App.css';
+import './styles/css/App.css';
 import './styles/css/fonts.css';
 import DatePicker from "./templates/datePicker";
 import Cards from "./templates/cards";

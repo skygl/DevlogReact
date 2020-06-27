@@ -1,5 +1,5 @@
 import React from "react";
-import "./card.css";
+import "../../styles/css/card.css";
 
 const CardImage = ({image_url}) => {
     const defaultImageUrl = "/devlog.png";

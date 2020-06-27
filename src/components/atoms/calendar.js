@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Prev from "./prev";
 import Next from "./next";
-import "./date.css";
+import "../../styles/css/date.css";
 import moment from "moment";
 
 const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN",

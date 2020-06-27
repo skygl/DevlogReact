@@ -1,5 +1,5 @@
 import React from "react";
-import './date.css';
+import '../../styles/css/date.css';
 
 const DateBlock = ({date, toggleActive}) => {
     let {year, month, day} = date;

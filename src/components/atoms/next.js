@@ -1,5 +1,5 @@
 import React from "react";
-import "./date.css";
+import "../../styles/css/date.css";
 
 const Next = ({date, changeDate}) => {
 

@@ -8,27 +8,38 @@ const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN",
     "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 
 const Calendar = ({date, changeDate}) => {
-    const [calendarDate, setCalendarDate] = useState(new Date(date.year, date.month - 1, date.day));
+    const [calendarDate, setCalendarDate] = useState({
+        year: date.year,
+        month: date.month,
+    });
 
     const changePrevMonth = () => {
-        let changedDate = new Date(calendarDate.getTime());
-        changedDate.setMonth(changedDate.getMonth() - 1);
-        setCalendarDate(changedDate);
+        const [year, month] = moment(calendarDate.year + calendarDate.month, "YYYYMM")
+            .subtract(1, 'months')
+            .format("YYYY-MM")
+            .split("-");
+        setCalendarDate({year, month});
     };
 
     const changeNextMonth = () => {
-        let changedDate = new Date(calendarDate.getTime());
-        changedDate.setMonth(calendarDate.getMonth() + 1);
-        setCalendarDate(changedDate);
+        const [year, month] = moment(calendarDate.year + calendarDate.month, "YYYYMM")
+            .add(1, 'months')
+            .format("YYYY-MM")
+            .split("-");
+        setCalendarDate({year, month});
     };
 
     const onClick = (current) => {
-        const [year, month, day] = current.format('YYYY-M-D').split('-');
+        console.log(current.format("YYYY-MM-DD"));
+        const [year, month, day] = current.format('YYYY-MM-DD').split('-');
         changeDate({year, month, day});
     };
 
     const generate = () => {
-        const calendarDay = moment(calendarDate);
+        const calendarDay = moment({
+            year: calendarDate.year,
+            month: calendarDate.month - 1
+        });
         const startWeek = calendarDay.clone().startOf('month').week();
         const endWeek = calendarDay.clone().endOf('month').week() === 1 ? 53 : calendarDay.clone().endOf('month').week();
         let calendar = [];
@@ -66,7 +77,7 @@ const Calendar = ({date, changeDate}) => {
                         </td>
                         <td>
                             <span
-                                className="calendar_title">{[months[calendarDate.getMonth()], calendarDate.getFullYear()].join(" ")}</span>
+                                className="calendar_title">{[months[calendarDate.month - 1], calendarDate.year].join(" ")}</span>
                         </td>
                         <td>
                             <Next date={calendarDate} changeDate={changeNextMonth}/>

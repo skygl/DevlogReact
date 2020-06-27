@@ -4,13 +4,6 @@ import './date.css';
 const DateBlock = ({date, toggleActive}) => {
     let {year, month, day} = date;
 
-    if (month < 10) {
-        month = '0' + month;
-    }
-    if (day < 10) {
-        day = '0' + day;
-    }
-
     return (
         <div>
             <button className={"date_btn"} onClick={() => toggleActive()}>

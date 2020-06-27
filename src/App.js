@@ -5,6 +5,7 @@ import './App.css';
 import './styles/css/fonts.css';
 import DatePicker from "./templates/datePicker";
 import Cards from "./templates/cards";
+import moment from "moment";
 
 function App() {
     const originalCards = [
@@ -152,12 +153,8 @@ function App() {
         }, 1500);
     };
 
-    const today = new Date();
-    const [date, setDate] = useState({
-        year: today.getFullYear(),
-        month: today.getMonth() + 1,
-        day: today.getDate()
-    });
+    const [year, month, day] = moment().format("YYYY-MM-DD").split("-");
+    const [date, setDate] = useState({year, month, day});
 
     const changeDate = ({year, month, day}) => {
         setDate({year, month, day});

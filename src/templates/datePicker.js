@@ -4,28 +4,25 @@ import "./datePicker.css";
 import Next from "../components/atoms/next";
 import DateBlock from "../components/atoms/dateBlock";
 import Calendar from "../components/atoms/calendar";
+import moment from "moment";
 
 const DatePicker = ({date, changeDate}) => {
     const [active, setActive] = useState(false);
 
     const changePrevDate = () => {
-        let currentDate = new Date(date.year, date.month - 1, date.day);
-        currentDate.setDate(currentDate.getDate() - 1);
-        changeDate({
-            year: currentDate.getFullYear(),
-            month: currentDate.getMonth() + 1,
-            day: currentDate.getDate()
-        })
+        const [year, month, day] = moment([date.year, date.month, date.day].join("-"))
+            .subtract(1, 'days')
+            .format("YYYY-MM-DD")
+            .split("-");
+        changeDate({year, month, day})
     };
 
     const changeNextDate = () => {
-        let currentDate = new Date(date.year, date.month - 1, date.day);
-        currentDate.setDate(currentDate.getDate() + 1);
-        changeDate({
-            year: currentDate.getFullYear(),
-            month: currentDate.getMonth() + 1,
-            day: currentDate.getDate()
-        })
+        const [year, month, day] = moment([date.year, date.month, date.day].join("-"))
+            .add(1, 'days')
+            .format("YYYY-MM-DD")
+            .split("-");
+        changeDate({year, month, day})
     };
 
     const toggleActive = () => {
@@ -52,7 +49,7 @@ const DatePicker = ({date, changeDate}) => {
                     </tr>
                     </tbody>
                 </table>
-                { active && <Calendar date={date} changeDate={changeDate}/>}
+                {active && <Calendar date={date} changeDate={changeDate}/>}
             </div>
         </>
     )

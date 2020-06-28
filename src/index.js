@@ -1,3 +1,4 @@
+/*global Kakao*/
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/css/index.css';
@@ -15,3 +16,5 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+Kakao.init('d28886106d224ada7c3061be6bd53188');

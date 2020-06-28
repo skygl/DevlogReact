@@ -1,0 +1,25 @@
+.button {
+    width: 60px;
+    height: 60px;
+    z-index: 1200;
+    border-radius: 50%;
+    line-height: 55px;
+}
+
+.question {
+    right: 15px;
+    bottom: 15px;
+    position: fixed;
+    background-color: #D6F6FE;
+    border: 1px solid #CAC5D8;
+}
+
+.button_area {
+    position: relative;
+}
+
+.button_img {
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+}

@@ -7,6 +7,7 @@ import DatePicker from "./templates/datePicker";
 import Cards from "./templates/cards";
 import moment from "moment";
 import dummy from './dummy';
+import Buttons from "./templates/buttons";
 
 function App() {
     const originalCards = dummy.cards;
@@ -51,6 +52,7 @@ function App() {
                     <Cards cards={cards} onLoadCards={loadNewCards} page={page}/>
                 </div>
             </div>
+            <Buttons/>
         </div>
     );
 }

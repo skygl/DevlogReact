@@ -49,6 +49,10 @@
     border-radius: 0 0 5px 5px;
 }
 
+.home {
+    text-align: center;
+}
+
 html {
     scroll-behavior: smooth;
 }

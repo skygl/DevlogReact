@@ -1,10 +1,11 @@
 import React from "react";
 import "../styles/css/banner.css";
+import {Link} from "react-router-dom";
 
 const Banner = () => {
     return (
         <div className={"banner_area"}>
-            <a href={"/"}>
+            <Link to={"/register"}>
                 <div className={"banner_a_block"}>
                     <div className={"banner"}>
                         <div className={"banner_title"}>
@@ -15,7 +16,7 @@ const Banner = () => {
                         </div>
                     </div>
                 </div>
-            </a>
+            </Link>
         </div>
     )
 };

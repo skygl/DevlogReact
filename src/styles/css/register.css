@@ -1,0 +1,9 @@
+.register_home {
+    width: 100%;
+    height: calc(100vh);
+}
+
+.content_area {
+    width: 100%;
+    height: calc(100vh - 78px);
+}

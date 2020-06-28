@@ -1,5 +1,5 @@
 import React from "react";
-import "../molecules/button.css";
+import "../../styles/css/button.css";
 
 const ButtonImage = ({src, alt}) => {
     return (

@@ -40,10 +40,15 @@
 .content_area {
     background-color: #DAEBEA;
     padding: 15px;
+    -webkit-overflow-scrolling: touch;
 }
 
 .cards_area {
     background-color: #F0ECE1;
     padding: 15px;
     border-radius: 0 0 5px 5px;
+}
+
+html {
+    scroll-behavior: smooth;
 }

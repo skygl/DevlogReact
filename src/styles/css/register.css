@@ -100,6 +100,7 @@
     border: 2px solid #d7d7d7;
     font-family: "BM JUA_OTF";
     line-height: 20px;
+    text-align: center;
 }
 
 .register_url_wrapper > p {
@@ -119,7 +120,78 @@
     margin-left: 5px;
 }
 
+.preview_container {
+    display: flex;
+    align-items: center;
+    border: #d7d7d7 1px solid;
+    margin: 30px 10px;
+    width: calc(100% - 20px);
+    height: calc(33vw - 33px);
+}
+
+.preview_img {
+    width: 33%;
+    height: 100%;
+    border-right: 1px solid #d7d7d7;
+}
+
+.preview_img > img {
+    height: 100%;
+    width: 100%;
+    max-width: calc(33vw);
+    object-fit: contain;
+}
+
+.preview_desc_box {
+    width: 67%;
+    padding: 5px;
+    text-align: left;
+}
+
+.preview_title {
+    font-size: 15px;
+    margin-bottom: 2vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.preview_desc {
+    margin-bottom: 2vw;
+    font-size: 14px;
+    height: 27px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-weight: normal;
+}
+
+.preview_url {
+    font-weight: normal;
+    font-size: 10px;
+}
+
 @media (min-width: 768px) {
+    .register_content_container {
+        align-items: center;
+        justify-content: normal;
+    }
+
+    .register_form_wrapper {
+        margin-top: 5%;
+        display: flex;
+        justify-content: center;
+        width: max-content;
+        height: 20vh;
+        min-height: 20%;
+        padding: 30px;
+        align-items: center;
+    }
+
     .register_form_row {
         align-items: center;
         flex-direction: row;
@@ -134,5 +206,31 @@
     .register_form_row > label {
         width: 40px;
         margin-right: 15px;
+    }
+
+    .preview_container {
+        max-width: 300px;
+        max-height: 100px;
+        margin-top: 10px;
+    }
+
+    .preview_desc_box {
+        width: 67%;
+        margin: 10px;
+        text-align: left;
+    }
+
+    .preview_title {
+        margin-bottom: 10px;
+    }
+
+    .preview_desc {
+        margin-bottom: 8px;
+    }
+
+    @media (min-width: 1024px) {
+        .register_form_wrapper {
+            min-height: 40%;
+        }
     }
 }

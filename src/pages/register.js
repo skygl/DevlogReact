@@ -5,6 +5,7 @@ import "../styles/css/register.css";
 import ImageWithText from "../components/molecules/imageWithText";
 import {Link} from "react-router-dom";
 import debounce from "lodash.debounce";
+import Preview from "../templates/preview";
 
 const Register = () => {
     const [fullUrl, setFullUrl] = useState({
@@ -100,14 +101,15 @@ const Register = () => {
                             <div className={"register_form_row"}>
                                 <label htmlFor={"register_url"}>URL</label>
                                 <div className={"register_url_wrapper"}>
-                                    <p className={"register_url_prefix"} ref={prefix}></p>
+                                    <p className={"register_url_prefix"} ref={prefix}/>
                                     <input id={"register_url"} type={"text"} ref={url} onChange={e => {
                                         delayUpdateUrl(e.target.value);
                                     }}/>
-                                    <p className={"register_url_suffix"} ref={suffix}></p>
+                                    <p className={"register_url_suffix"} ref={suffix}/>
                                 </div>
                             </div>
                         </form>
+                        <Preview url={[fullUrl.prefix, fullUrl.url, fullUrl.suffix].join("")}/>
                     </div>
                 </div>
             </div>

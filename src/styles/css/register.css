@@ -1,9 +1,138 @@
 .register_home {
+    text-align: center;
     width: 100%;
     height: calc(100vh);
 }
 
-.content_area {
-    width: 100%;
+.register_content_area {
+    background-color: #DAEBEA;
+    width: calc(100% - 30px);
     height: calc(100vh - 78px);
+    padding: 15px;
+}
+
+.register_content_container {
+    width: calc(100% - 30px);
+    height: calc(100% - 68px);
+    background-color: #F0ECE1;
+    padding: 15px;
+    border-radius: 0 0 5px 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.register_title_container {
+    border-radius: 5px 5px 0 0;
+    padding: 10px;
+    background-color: #FFFFFF;
+    display: flex;
+    width: calc(100% - 20px);
+}
+
+.register_title {
+    width: 90px;
+    margin: 0 auto;
+}
+
+.back_home {
+    position: absolute;
+    float: left;
+}
+
+.back_home span {
+    visibility: hidden;
+    color: black;
+}
+
+@media (min-width: 768px) {
+    .back_home span {
+        visibility: visible;
+    }
+}
+
+.register_form_wrapper {
+    font-family: "BM HANNA Air OTF";
+    font-weight: bold;
+    padding: 10px;
+    background: #fff;
+    border-radius: 5px;
+    min-height: 60%;
+}
+
+#register_platform {
+    background: #fff;
+    width: 100px;
+    height: 30px;
+    border: 2px solid #d7d7d7;
+    appearance: none;
+    -webkit-appearance: none;
+    text-align-last: center;
+    line-height: 20px;
+}
+
+#register_platform::-ms-expand {
+    opacity: 0;
+}
+
+.register_form_row {
+    display: flex;
+    margin: 10px 10px 20px;
+    flex-direction: column;
+}
+
+.register_form_row > label {
+    width: 40px;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.register_url_wrapper {
+    display: flex;
+    align-items: center;
+    flex-flow: wrap;
+}
+
+#register_url {
+    background: #fff;
+    width: 250px;
+    height: 25px;
+    border: 2px solid #d7d7d7;
+    font-family: "BM JUA_OTF";
+    line-height: 20px;
+}
+
+.register_url_wrapper > p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.register_url_wrapper > p:empty:before {
+    content: "";
+}
+
+.register_url_prefix:not(:empty) {
+    margin-right: 5px;
+}
+
+.register_url_suffix:not(:empty) {
+    margin-left: 5px;
+}
+
+@media (min-width: 768px) {
+    .register_form_row {
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .register_form_row {
+        display: flex;
+        margin: 10px 10px 20px;
+        align-items: center;
+    }
+
+    .register_form_row > label {
+        width: 40px;
+        margin-right: 15px;
+    }
 }

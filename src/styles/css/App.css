@@ -53,6 +53,20 @@
     text-align: center;
 }
 
+.title_image {
+    margin-top: 3px;
+    width: 15px;
+    height: 15px;
+}
+
+.image_text_container {
+    display: flex;
+}
+
 html {
     scroll-behavior: smooth;
+}
+
+td:empty::after{
+    content: "\00a0";
 }

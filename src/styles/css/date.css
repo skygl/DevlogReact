@@ -21,6 +21,15 @@ hr {
 .date_btn {
     background-color: transparent;
     border-width: 0;
+    outline: none;
+}
+
+.date_table {
+    width:200px;
+}
+
+.date_table td {
+    width: 24px;
 }
 
 .calendar_icon {
@@ -41,7 +50,6 @@ hr {
 
 .row {
     display: flex;
-    cursor: pointer;
 }
 
 .row:first-child {
@@ -99,4 +107,8 @@ hr {
 .calendar_title {
     font-size: 13px;
     vertical-align: 11%;
+}
+
+.can_select {
+    cursor: pointer;
 }

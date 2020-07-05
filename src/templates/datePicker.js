@@ -6,11 +6,15 @@ import DateBlock from "../components/atoms/dateBlock";
 import Calendar from "../components/atoms/calendar";
 import moment from "moment";
 
+const firstDate = moment("2020-07-05");
+
 const DatePicker = ({date, changeDate}) => {
     const [active, setActive] = useState(false);
 
+    const momentDate = moment([date.year, date.month, date.day].join("-"));
+
     const changePrevDate = () => {
-        const [year, month, day] = moment([date.year, date.month, date.day].join("-"))
+        const [year, month, day] = moment(momentDate)
             .subtract(1, 'days')
             .format("YYYY-MM-DD")
             .split("-");
@@ -18,7 +22,7 @@ const DatePicker = ({date, changeDate}) => {
     };
 
     const changeNextDate = () => {
-        const [year, month, day] = moment([date.year, date.month, date.day].join("-"))
+        const [year, month, day] = moment(momentDate)
             .add(1, 'days')
             .format("YYYY-MM-DD")
             .split("-");
@@ -38,13 +42,15 @@ const DatePicker = ({date, changeDate}) => {
                     <tbody>
                     <tr>
                         <td>
-                            <Prev date={date} changeDate={changePrevDate}/>
+                            <Prev date={date} changeDate={changePrevDate}
+                                  show={moment(momentDate).subtract(1, 'days').isSameOrAfter(firstDate)}/>
                         </td>
                         <td className={"date_block"}>
                             <DateBlock date={date} toggleActive={toggleActive}/>
                         </td>
                         <td>
-                            <Next date={date} changeDate={changeNextDate}/>
+                            <Next date={date} changeDate={changeNextDate}
+                                  show={moment(momentDate).add(1, 'days').isSameOrBefore(moment())}/>
                         </td>
                     </tr>
                     </tbody>

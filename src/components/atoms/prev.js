@@ -1,12 +1,12 @@
 import React from "react";
 import "../../styles/css/date.css";
 
-const Prev = ({date, changeDate}) => {
+const Prev = ({show, date, changeDate}) => {
 
     return (
         <div className={"prev_date"}>
             <button className={"date_btn"} onClick={changeDate}>
-                <img src={"/back.svg"} alt={"select previous day"} className={"date_move"}/>
+                {show && <img src={"/back.svg"} alt={"select previous day"} className={"date_move"}/>}
             </button>
         </div>
     )

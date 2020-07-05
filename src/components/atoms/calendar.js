@@ -7,23 +7,40 @@ import moment from "moment";
 const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN",
     "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 
+const firstDate = moment("2020-07-05");
+
 const Calendar = ({date, changeDate}) => {
     const [calendarDate, setCalendarDate] = useState({
         year: date.year,
         month: date.month,
     });
 
+    const momentDate = moment(calendarDate.year + calendarDate.month, "YYYYMM");
+
     const changePrevMonth = () => {
-        const [year, month] = moment(calendarDate.year + calendarDate.month, "YYYYMM")
-            .subtract(1, 'months')
+        const willChangeDate = moment(momentDate)
+            .subtract(1, 'months');
+
+        if (willChangeDate.isBefore(firstDate)) {
+            return;
+        }
+
+        const [year, month] = willChangeDate
             .format("YYYY-MM")
             .split("-");
         setCalendarDate({year, month});
     };
 
     const changeNextMonth = () => {
-        const [year, month] = moment(calendarDate.year + calendarDate.month, "YYYYMM")
-            .add(1, 'months')
+        const willChangeDate = moment(momentDate)
+            .add(1, 'months');
+
+        const today = moment();
+        if (willChangeDate.isAfter(today)) {
+            return;
+        }
+
+        const [year, month] = willChangeDate
             .format("YYYY-MM")
             .split("-");
         setCalendarDate({year, month});
@@ -49,11 +66,11 @@ const Calendar = ({date, changeDate}) => {
                     {
                         Array(7).fill(0).map((n, i) => {
                             let current = calendarDay.clone().week(week).startOf('week').add(n + i, 'day');
-                            let isSelected = moment().format('YYYYMMDD') === current.format('YYYYMMDD') ? 'selected' : '';
-                            let isGrayed = current.format('MM') === calendarDay.format('MM') ? '' : 'grayed';
+                            let canSelect = current.isSameOrAfter(firstDate) && current.isSameOrBefore(moment());
+                            let isGrayed = canSelect && current.format('MM') === calendarDay.format('MM') ? '' : 'grayed';
                             return (
-                                <div className={`box  ${isSelected} ${isGrayed}`} key={i}
-                                     onClick={() => onClick(current)}>
+                                <div className={`box ${isGrayed} ${canSelect ? 'can_select' : ''}`} key={i}
+                                     onClick={canSelect ? () => onClick(current) : null}>
                                     <span className={`text`}>{current.format('D')}</span>
                                 </div>
                             )
@@ -73,14 +90,16 @@ const Calendar = ({date, changeDate}) => {
                     <tbody>
                     <tr>
                         <td>
-                            <Prev date={calendarDate} changeDate={changePrevMonth}/>
+                            {moment(momentDate).subtract(1, 'months').isAfter(firstDate) &&
+                            <Prev date={calendarDate} changeDate={changePrevMonth}/>}
                         </td>
                         <td>
                             <span
                                 className="calendar_title">{[months[calendarDate.month - 1], calendarDate.year].join(" ")}</span>
                         </td>
                         <td>
-                            <Next date={calendarDate} changeDate={changeNextMonth}/>
+                            {moment(momentDate).add(1, 'months').isBefore(moment()) &&
+                            <Next date={calendarDate} changeDate={changeNextMonth}/>}
                         </td>
                     </tr>
                     </tbody>

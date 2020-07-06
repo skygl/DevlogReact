@@ -107,3 +107,24 @@ export function useProxy(url, setOg) {
         }
     }, [url, setOg]);
 }
+
+export function useCheckDuplicatedUrl(url, setIsDuplicated) {
+    useEffect(() => {
+        if (urlValidator.test(url)) {
+            axios({
+                method: 'GET',
+                url: `http://${API_SERVER_HOST}:${API_SERVER_PORT}/api/blogs/check`,
+                params: {
+                    url: url
+                }
+            })
+                .then(res => {
+                    console.log(res.data);
+                    setIsDuplicated(res.data.exists);
+                })
+                .catch(error => {
+                    setIsDuplicated(false);
+                })
+        }
+    }, [setIsDuplicated, url])
+}

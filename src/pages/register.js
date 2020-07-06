@@ -6,6 +6,7 @@ import ImageWithText from "../components/molecules/imageWithText";
 import {Link} from "react-router-dom";
 import debounce from "lodash.debounce";
 import Preview from "../templates/preview";
+import {useCheckDuplicatedUrl} from "../useApi";
 
 const Register = () => {
     const [fullUrl, setFullUrl] = useState({
@@ -68,6 +69,10 @@ const Register = () => {
         }
     };
 
+    const [isDuplicated, setIsDuplicated] = useState(false);
+
+    useCheckDuplicatedUrl([fullUrl.prefix, fullUrl.url, fullUrl.suffix].join(""), setIsDuplicated);
+
     return (
         <div className={"register_home"}>
             <Header/>
@@ -104,10 +109,15 @@ const Register = () => {
                                     <label htmlFor={"register_url"}>URL</label>
                                     <div className={"register_url_wrapper"}>
                                         <p className={"register_url_prefix"} ref={prefix}/>
-                                        <input id={"register_url"} type={"text"} ref={url} onChange={e => {
+                                        <input className={(isDuplicated ? 'input_alert' : '')} id={"register_url"}
+                                               type={"text"}
+                                               ref={url} onChange={e => {
                                             delayUpdateUrl(e.target.value);
                                         }}/>
                                         <p className={"register_url_suffix"} ref={suffix}/>
+                                    </div>
+                                    <div className={"duplicated_url_box"}>
+                                        {isDuplicated && <span>이미 블로그가 등록되어 있습니다.</span>}
                                     </div>
                                 </div>
                                 <Preview url={[fullUrl.prefix, fullUrl.url, fullUrl.suffix].join("")}/>

@@ -8,7 +8,7 @@ const masonryOptions = {
     gutter: 20,
 };
 
-const Cards = ({cards, onLoadCards, page}) => {
+const Cards = ({cards, onLoadPosts, page, hasMorePosts}) => {
 
     const generateCards = (cards) => {
         return cards.map(card => {
@@ -22,8 +22,8 @@ const Cards = ({cards, onLoadCards, page}) => {
         <div>
             <InfiniteScroll
                 pageStart={0}
-                loadMore={onLoadCards}
-                hasMore={true}
+                loadMore={onLoadPosts}
+                hasMore={hasMorePosts}
                 loader={
                     <div className="loading-container" key={page}>
                         <div className="loading"/>

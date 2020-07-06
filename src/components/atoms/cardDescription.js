@@ -1,6 +1,6 @@
 import React from "react";
 
-const CardDescription = ({title, tagNames}) => {
+const CardDescription = ({title, tagNames, description}) => {
     const generateTags = (tagNames) => {
         return tagNames.map((tagName, i) => {
             return (
@@ -15,6 +15,9 @@ const CardDescription = ({title, tagNames}) => {
         <div className={"card_description_area"}>
             <div className={"title"}>
                 <h3>{title}</h3>
+            </div>
+            <div className={"description"}>
+                <span>{description}</span>
             </div>
             <div className={"tags"}>
                 {generateTags(tagNames)}

@@ -27,7 +27,7 @@ const Register = () => {
         if (prefixFormat === "" && suffixFormat === "") {
             url.current.style.width = "200px";
         } else {
-            url.current.style.width = "100px";
+            url.current.style.width = "110px";
         }
         prefix.current.innerHTML = prefixFormat;
         suffix.current.innerHTML = suffixFormat;
@@ -85,31 +85,37 @@ const Register = () => {
                 <div className={"register_content_container"}>
                     <div className={"register_form_wrapper"}>
                         <form action={"#"}>
-                            <div className={"register_form_row"}>
-                                <label htmlFor={"register_platform"}>플랫폼</label>
-                                <select id={"register_platform"} title={"platform"} name={"platform"} onChange={(e) => {
-                                    convertPrefixAndSuffix(e.target.value);
-                                }}>
-                                    <option value={"self"}>직접 입력</option>
-                                    <option value={"tistory"}>tistory</option>
-                                    <option value={"velog"}>velog</option>
-                                    <option value={"brunch"}>brunch</option>
-                                    <option value={"medium"}>medium</option>
-                                    <option value={"github"}>github</option>
-                                </select>
-                            </div>
-                            <div className={"register_form_row"}>
-                                <label htmlFor={"register_url"}>URL</label>
-                                <div className={"register_url_wrapper"}>
-                                    <p className={"register_url_prefix"} ref={prefix}/>
-                                    <input id={"register_url"} type={"text"} ref={url} onChange={e => {
-                                        delayUpdateUrl(e.target.value);
-                                    }}/>
-                                    <p className={"register_url_suffix"} ref={suffix}/>
+                            <div>
+                                <div className={"register_form_row"}>
+                                    <label htmlFor={"register_platform"}>플랫폼</label>
+                                    <select id={"register_platform"} title={"platform"} name={"platform"}
+                                            onChange={(e) => {
+                                                convertPrefixAndSuffix(e.target.value);
+                                            }}>
+                                        <option value={"self"}>직접 입력</option>
+                                        <option value={"tistory"}>tistory</option>
+                                        <option value={"velog"}>velog</option>
+                                        <option value={"brunch"}>brunch</option>
+                                        <option value={"medium"}>medium</option>
+                                        <option value={"github"}>github</option>
+                                    </select>
                                 </div>
+                                <div className={"register_form_row"}>
+                                    <label htmlFor={"register_url"}>URL</label>
+                                    <div className={"register_url_wrapper"}>
+                                        <p className={"register_url_prefix"} ref={prefix}/>
+                                        <input id={"register_url"} type={"text"} ref={url} onChange={e => {
+                                            delayUpdateUrl(e.target.value);
+                                        }}/>
+                                        <p className={"register_url_suffix"} ref={suffix}/>
+                                    </div>
+                                </div>
+                                <Preview url={[fullUrl.prefix, fullUrl.url, fullUrl.suffix].join("")}/>
+                            </div>
+                            <div>
+                                <input className={"register_btn"} type={"submit"} value={"등록"}/>
                             </div>
                         </form>
-                        <Preview url={[fullUrl.prefix, fullUrl.url, fullUrl.suffix].join("")}/>
                     </div>
                 </div>
             </div>

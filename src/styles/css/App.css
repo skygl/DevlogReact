@@ -41,6 +41,7 @@
     background-color: #DAEBEA;
     padding: 15px;
     -webkit-overflow-scrolling: touch;
+    min-height: calc(100vh - 178px);
 }
 
 .cards_area {

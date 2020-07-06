@@ -6,7 +6,8 @@ import ImageWithText from "../components/molecules/imageWithText";
 import {Link} from "react-router-dom";
 import debounce from "lodash.debounce";
 import Preview from "../templates/preview";
-import {useCheckDuplicatedUrl} from "../useApi";
+import {postRegisterForm, useCheckDuplicatedUrl} from "../useApi";
+import Modal from "../templates/modal";
 
 const Register = () => {
     const [fullUrl, setFullUrl] = useState({
@@ -50,7 +51,9 @@ const Register = () => {
         setUrl(url);
     };
 
-    const delayUpdateUrl = debounce(updateUrl, 1000);
+    const [warnMessage, setWarnMessage] = useState('');
+
+    const delayUpdateUrl = debounce(updateUrl, 500);
 
     const convertPrefixAndSuffix = (platform) => {
         switch (platform) {
@@ -71,65 +74,79 @@ const Register = () => {
 
     const [isDuplicated, setIsDuplicated] = useState(false);
 
-    useCheckDuplicatedUrl([fullUrl.prefix, fullUrl.url, fullUrl.suffix].join(""), setIsDuplicated);
+    useCheckDuplicatedUrl([fullUrl.prefix, fullUrl.url, fullUrl.suffix].join(""), setIsDuplicated, setWarnMessage);
+
+    const [modal, setModal] = useState({
+        show: false,
+        success: false,
+        message: ''
+    });
+
+    const onSubmit = function (event) {
+        postRegisterForm([fullUrl.prefix, fullUrl.url, fullUrl.suffix].join(""), setModal);
+        event.preventDefault();
+    };
 
     return (
-        <div className={"register_home"}>
-            <Header/>
-            <div className={"register_content_area"}>
-                <div className={"register_title_container"}>
-                    <div className={"back_home"}>
-                        <Link style={{textDecoration: "none"}} to={"/"}>
-                            <ImageWithText imageInfo={backImageInfo} text={"돌아가기"}/>
-                        </Link>
+        <>
+            <div className={"register_home"}>
+                <Header/>
+                <div className={"register_content_area"}>
+                    <div className={"register_title_container"}>
+                        <div className={"back_home"}>
+                            <Link style={{textDecoration: "none"}} to={"/"}>
+                                <ImageWithText imageInfo={backImageInfo} text={"돌아가기"}/>
+                            </Link>
+                        </div>
+                        <div className={"register_title"}>
+                            블로그 등록
+                        </div>
                     </div>
-                    <div className={"register_title"}>
-                        블로그 등록
-                    </div>
-                </div>
-                <div className={"register_content_container"}>
-                    <div className={"register_form_wrapper"}>
-                        <form action={"#"}>
-                            <div>
-                                <div className={"register_form_row"}>
-                                    <label htmlFor={"register_platform"}>플랫폼</label>
-                                    <select id={"register_platform"} title={"platform"} name={"platform"}
-                                            onChange={(e) => {
-                                                convertPrefixAndSuffix(e.target.value);
-                                            }}>
-                                        <option value={"self"}>직접 입력</option>
-                                        <option value={"tistory"}>tistory</option>
-                                        <option value={"velog"}>velog</option>
-                                        <option value={"brunch"}>brunch</option>
-                                        <option value={"medium"}>medium</option>
-                                        <option value={"github"}>github</option>
-                                    </select>
-                                </div>
-                                <div className={"register_form_row"}>
-                                    <label htmlFor={"register_url"}>URL</label>
-                                    <div className={"register_url_wrapper"}>
-                                        <p className={"register_url_prefix"} ref={prefix}/>
-                                        <input className={(isDuplicated ? 'input_alert' : '')} id={"register_url"}
-                                               type={"text"}
-                                               ref={url} onChange={e => {
-                                            delayUpdateUrl(e.target.value);
-                                        }}/>
-                                        <p className={"register_url_suffix"} ref={suffix}/>
+                    <div className={"register_content_container"}>
+                        <div className={"register_form_wrapper"}>
+                            <form action={"#"} onSubmit={onSubmit}>
+                                <div>
+                                    <div className={"register_form_row"}>
+                                        <label htmlFor={"register_platform"}>플랫폼</label>
+                                        <select id={"register_platform"} title={"platform"} name={"platform"}
+                                                onChange={(e) => {
+                                                    convertPrefixAndSuffix(e.target.value);
+                                                }}>
+                                            <option value={"self"}>직접 입력</option>
+                                            <option value={"tistory"}>tistory</option>
+                                            <option value={"velog"}>velog</option>
+                                            <option value={"brunch"}>brunch</option>
+                                            <option value={"medium"}>medium</option>
+                                            <option value={"github"}>github</option>
+                                        </select>
                                     </div>
-                                    <div className={"duplicated_url_box"}>
-                                        {isDuplicated && <span>이미 블로그가 등록되어 있습니다.</span>}
+                                    <div className={"register_form_row"}>
+                                        <label htmlFor={"register_url"}>URL</label>
+                                        <div className={"register_url_wrapper"}>
+                                            <p className={"register_url_prefix"} ref={prefix}/>
+                                            <input className={(isDuplicated ? 'input_alert' : '')} id={"register_url"}
+                                                   type={"text"}
+                                                   ref={url} onChange={e => {
+                                                delayUpdateUrl(e.target.value);
+                                            }}/>
+                                            <p className={"register_url_suffix"} ref={suffix}/>
+                                        </div>
+                                        <div className={"duplicated_url_box"}>
+                                            {isDuplicated && <span>{warnMessage}</span>}
+                                        </div>
                                     </div>
+                                    <Preview url={[fullUrl.prefix, fullUrl.url, fullUrl.suffix].join("")}/>
                                 </div>
-                                <Preview url={[fullUrl.prefix, fullUrl.url, fullUrl.suffix].join("")}/>
-                            </div>
-                            <div>
-                                <input className={"register_btn"} type={"submit"} value={"등록"}/>
-                            </div>
-                        </form>
+                                <div>
+                                    <input className={"register_btn"} type={"submit"} value={"등록"}/>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+            {modal.show && <Modal content={modal.message} success={modal.success} setModal={setModal}/>}
+        </>
     )
 };
 

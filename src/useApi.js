@@ -108,7 +108,7 @@ export function useProxy(url, setOg) {
     }, [url, setOg]);
 }
 
-export function useCheckDuplicatedUrl(url, setIsDuplicated) {
+export function useCheckDuplicatedUrl(url, setIsDuplicated, setWarnMessage) {
     useEffect(() => {
         if (urlValidator.test(url)) {
             axios({
@@ -119,12 +119,54 @@ export function useCheckDuplicatedUrl(url, setIsDuplicated) {
                 }
             })
                 .then(res => {
-                    console.log(res.data);
+                    if (res.data.type === 'blog') {
+                        setWarnMessage('이미 블로그가 등록되어 있습니다')
+                    } else if (res.data.type === 'blogreq') {
+                        setWarnMessage('등록 대기 중인 블로그입니다')
+                    }
                     setIsDuplicated(res.data.exists);
                 })
-                .catch(error => {
+                .catch(() => {
                     setIsDuplicated(false);
                 })
         }
     }, [setIsDuplicated, url])
+}
+
+export function postRegisterForm(url, setModal) {
+    const modal = {};
+    modal.show = true;
+    if (urlValidator.test(url)) {
+        axios({
+            method: 'POST',
+            url: `http://${API_SERVER_HOST}:${API_SERVER_PORT}/api/blogreqs`,
+            data: {
+                url: url
+            }
+        })
+            .then(res => {
+                modal.message = '등록되었습니다';
+                modal.success = true;
+                setModal(modal);
+            })
+            .catch(err => {
+                modal.success = false;
+                if (err.response.status === 409) {
+                    if (err.response.data.type === 'blog') {
+                       modal.message = '이미 등록된 블로그입니다';
+                    } else if (err.response.data.type === 'blogreq') {
+                        modal.message = '등록 대기중인 블로그입니다';
+                    } else {
+                        modal.message = '문제가 발생했습니다';
+                    }
+                } else if (err.response.status === 500) {
+                    modal.message = '문제가 발생했습니다';
+                }
+                setModal(modal);
+            })
+    } else {
+        modal.success = false;
+        modal.message = '입력하신 URL은 올바른 포맷이 아닙니다';
+        setModal(modal);
+    }
 }

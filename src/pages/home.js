@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import Header from "../templates/header";
 import Banner from "../templates/banner";
 import '../styles/css/App.css';
-import '../styles/css/fonts.css';
 import DatePicker from "../templates/datePicker";
 import Cards from "../templates/cards";
 import moment from "moment";
@@ -36,7 +35,7 @@ function Home() {
         <div className={"home"}>
             <Header/>
             <Banner/>
-            <div className={"content_area"}>
+            <div className={"content_area home_content_area"}>
                 <DatePicker date={date} changeDate={changeDate}/>
                 <div className={"cards_area"}>
                     <Cards cards={posts} onLoadPosts={loadPosts} hasMorePosts={hasMorePosts} page={page}/>

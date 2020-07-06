@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import Prev from "../components/atoms/prev";
-import "../styles/css/datePicker.css";
 import Next from "../components/atoms/next";
 import DateBlock from "../components/atoms/dateBlock";
 import Calendar from "../components/atoms/calendar";

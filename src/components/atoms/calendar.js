@@ -104,30 +104,32 @@ const Calendar = ({date, changeDate}) => {
                     </tr>
                     </tbody>
                 </table>
-                <div className="row">
-                    <div className="box">
-                        <span className="text">SUN</span>
+                <div>
+                    <div className="row">
+                        <div className="box">
+                            <span className="text">SUN</span>
+                        </div>
+                        <div className="box">
+                            <span className="text">MON</span>
+                        </div>
+                        <div className="box">
+                            <span className="text">TUE</span>
+                        </div>
+                        <div className="box">
+                            <span className="text">WED</span>
+                        </div>
+                        <div className="box">
+                            <span className="text">THU</span>
+                        </div>
+                        <div className="box">
+                            <span className="text">FRI</span>
+                        </div>
+                        <div className="box">
+                            <span className="text">SAT</span>
+                        </div>
                     </div>
-                    <div className="box">
-                        <span className="text">MON</span>
-                    </div>
-                    <div className="box">
-                        <span className="text">TUE</span>
-                    </div>
-                    <div className="box">
-                        <span className="text">WED</span>
-                    </div>
-                    <div className="box">
-                        <span className="text">THU</span>
-                    </div>
-                    <div className="box">
-                        <span className="text">FRI</span>
-                    </div>
-                    <div className="box">
-                        <span className="text">SAT</span>
-                    </div>
+                    {generate()}
                 </div>
-                {generate()}
             </div>
         </>
     )

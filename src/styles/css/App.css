@@ -1,67 +1,26 @@
-.App {
-    text-align: center;
-}
-
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
-}
-
-.App-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-}
-
-.App-link {
-    color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-.content_area {
-    background-color: #DAEBEA;
-    padding: 15px;
-    -webkit-overflow-scrolling: touch;
-    min-height: calc(100vh - 178px);
-}
-
-.cards_area {
-    background-color: #F0ECE1;
-    padding: 15px;
-    border-radius: 0 0 5px 5px;
-}
+/* All Device */
 
 .home {
     text-align: center;
 }
 
-.title_image {
-    margin-top: 3px;
-    width: 15px;
-    height: 15px;
+.content_area {
+    background-color: #DAEBEA;
+    -webkit-overflow-scrolling: touch;
 }
 
-.image_text_container {
-    display: flex;
+.header_area {
+    background-color: #CAC5D8;
+    height: 50px;
+}
+
+.banner_area {
+    height: 70px;
+    background-color: #FAEBEF;
+}
+
+.home_content_area {
+    min-height: calc(100vh - 160px);
 }
 
 html {
@@ -70,4 +29,25 @@ html {
 
 td:empty::after{
     content: "\00a0";
+}
+
+
+/* Mobile Device */
+
+.content_area {
+    padding: 20px;
+}
+
+
+/* Tablet &amp; Desktop Device */
+
+@media all and (min-width:768px) {
+
+    .content_area {
+        padding: 30px;
+    }
+
+    .home_content_area {
+        min-height: calc(100vh - 180px);
+    }
 }

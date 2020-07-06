@@ -18,6 +18,14 @@
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
 }
 
+@media (min-width: 768px) {
+    .Modal {
+        top: 35%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
 .Modal > * {
     margin-left: 16px;
     margin-right: 16px;

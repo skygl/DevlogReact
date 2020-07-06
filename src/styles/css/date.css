@@ -1,21 +1,8 @@
+/* All Device */
+
 .date_area {
     border-radius: 5px 5px 0 0;
-    padding: 10px 0;
-}
-
-hr {
-    width: 80%;
-}
-
-@media (min-width: 768px) {
-    hr {
-        width: 40%;
-    }
-}
-
-.date_move {
-    width: 10px;
-    height: 10px;
+    background-color: #FFFFFF;
 }
 
 .date_btn {
@@ -24,27 +11,16 @@ hr {
     outline: none;
 }
 
-.date_table {
-    width:200px;
-}
-
-.date_table td {
-    width: 24px;
-}
-
-.calendar_icon {
-    float: left;
-    width: 15px;
-    margin-left: 5px;
-}
-
 .date_title {
     font-family: "BM JUA_OTF";
     float: left;
 }
 
-.calendar_box {
-    max-width: 300px;
+.calendar_icon {
+    float: right;
+}
+
+.date_table {
     margin: 0 auto;
 }
 
@@ -81,11 +57,6 @@ hr {
     color: gray;
 }
 
-.box.selected > span.text {
-    background-color: #588dff;
-    color: white;
-}
-
 .box > span.text {
     border-radius: 100%;
     display: inline-flex;
@@ -97,6 +68,12 @@ hr {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-family: "BBTreeGR";
+    font-weight: normal;
+}
+
+.calendar_box div:first-child .box > span.text {
+    font-family: "BBTreeGB";
 }
 
 .calendar_title_table {
@@ -104,11 +81,110 @@ hr {
     font-family: "BM JUA_OTF";
 }
 
-.calendar_title {
-    font-size: 13px;
-    vertical-align: 11%;
-}
-
 .can_select {
     cursor: pointer;
+}
+
+
+/* Mobile Device */
+
+.date_area {
+    padding: 10px;
+    width: calc(100% - 20px);
+}
+
+hr {
+    width: 80%;
+}
+
+.date_move {
+    width: 12px;
+    height: 12px;
+}
+
+.date_table td {
+    min-width: 24px;
+}
+
+.calendar_icon {
+    width: 15px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+.date_title {
+    margin-top: 1px;
+}
+
+.calendar_box {
+    max-width: 300px;
+    margin: 0 auto 5px;
+}
+
+.calendar_box > .row:first-child {
+    font-weight: bold;
+}
+
+.calendar_title {
+    font-size: 13px;
+    vertical-align: 12%;
+}
+
+
+/* Tablet &amp; Desktop Device */
+@media all and (min-width:768px) {
+    .date_area {
+        padding: 15px;
+        width: calc(100% - 30px);
+    }
+
+    hr {
+        width: 40%;
+    }
+
+    .date_move {
+        width: 17px;
+        height: 17px;
+    }
+
+    .date_table td {
+        min-width: 30px;
+    }
+
+    .date_title {
+        font-size: 1.1rem;
+        margin-top: 2px;
+    }
+
+    .calendar_icon {
+        width: 20px;
+        margin-bottom: 5px;
+        margin-left: 10px;
+    }
+
+    .calendar_box {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .calendar_title {
+        font-size: 1.1rem;
+        vertical-align: 11%;
+    }
+}
+
+
+/* Tablet Device */
+@media all and (min-width:768px) and (max-width:1024px) {
+    .box > span.text {
+        font-size: 1.02rem;
+    }
+}
+
+
+/* Desktop Device */
+@media all and (min-width:1025px) {
+    .box > span.text {
+        font-size: 1.03rem;
+    }
 }

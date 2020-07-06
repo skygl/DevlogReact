@@ -26,11 +26,6 @@ const Register = () => {
     const url = useRef();
 
     const setPrefixAndSuffix = (prefixFormat, suffixFormat) => {
-        if (prefixFormat === "" && suffixFormat === "") {
-            url.current.style.width = "200px";
-        } else {
-            url.current.style.width = "110px";
-        }
         prefix.current.innerHTML = prefixFormat;
         suffix.current.innerHTML = suffixFormat;
         setFullUrl({
@@ -87,11 +82,16 @@ const Register = () => {
         event.preventDefault();
     };
 
+    const onKeyPress = function (event) {
+        const length = (event.target.value.length + 1) * 8;
+        event.target.style.width = ((length < 50) ? 50 : length) + 'px';
+    };
+
     return (
         <>
-            <div className={"register_home"}>
+            <div className={"home"}>
                 <Header/>
-                <div className={"register_content_area"}>
+                <div className={"content_area register_content_area"}>
                     <div className={"register_title_container"}>
                         <div className={"back_home"}>
                             <Link style={{textDecoration: "none"}} to={"/"}>
@@ -121,15 +121,17 @@ const Register = () => {
                                         </select>
                                     </div>
                                     <div className={"register_form_row"}>
-                                        <label htmlFor={"register_url"}>URL</label>
-                                        <div className={"register_url_wrapper"}>
-                                            <p className={"register_url_prefix"} ref={prefix}/>
-                                            <input className={(isDuplicated ? 'input_alert' : '')} id={"register_url"}
-                                                   type={"text"}
-                                                   ref={url} onChange={e => {
-                                                delayUpdateUrl(e.target.value);
-                                            }}/>
-                                            <p className={"register_url_suffix"} ref={suffix}/>
+                                        <div className={"register_url_box"}>
+                                            <label htmlFor={"register_url"}>URL</label>
+                                            <div className={"register_url_wrapper"}>
+                                                <p className={"register_url_prefix"} ref={prefix}/>
+                                                <input className={(isDuplicated ? 'input_alert' : '')} id={"register_url"}
+                                                       type={"text"} onKeyDown={onKeyPress}
+                                                       ref={url} onChange={e => {
+                                                    delayUpdateUrl(e.target.value);
+                                                }}/>
+                                                <p className={"register_url_suffix"} ref={suffix}/>
+                                            </div>
                                         </div>
                                         <div className={"duplicated_url_box"}>
                                             {isDuplicated && <span>{warnMessage}</span>}

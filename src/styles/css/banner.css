@@ -1,31 +1,24 @@
-.banner_area {
-    border-width: 0;
-    height: 100px;
-    background-color: #FAEBEF;
-}
+/* All Device */
 
 .banner_area > a {
     text-decoration: none;
 }
 
 .banner_a_block {
-    width: 100%;
-    height: 100px;
+    height: 70px;
 }
 
 .banner {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100px;
+    height: 70px;
 }
 
 .banner_title {
     overflow: hidden;
     white-space: nowrap;
-    width: 189px;
     margin-right: 10px;
-    float: left;
 }
 
 .banner_title > span {
@@ -34,11 +27,23 @@
 }
 
 .banner_icon {
-    float: right;
     width: 40px;
     margin-left: 10px;
 }
 
 .banner_icon > img {
     height: 40px;
+}
+
+/* Mobile Device */
+
+.banner_title > span {
+    font-size: 1rem;
+}
+
+/* Tablet &amp; Desktop Device */
+@media all and (min-width:768px) {
+    .banner_title > span {
+        font-size: 1.1rem;
+    }
 }

@@ -7,7 +7,8 @@ const API_SERVER_PORT = process.env.REACT_APP_API_SERVER_PORT;
 
 export function usePostList(date, page, offset, setCards, setHasMorePosts) {
     useEffect(() => {
-        const postDate = [date.year, date.month, parseInt(date.day) - 1].join("-");
+        const day = parseInt(date.day) - 1;
+        const postDate = [date.year, date.month, day >= 10 ? day : '0' + day].join("-");
         axios({
             method: 'GET',
             url: `http://${API_SERVER_HOST}:${API_SERVER_PORT}/posts`,

@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/css/modal.css';
+import {Link} from "react-router-dom";
 
 const Modal = ({content, success, setModal}) => {
     const buttonClassName = `button-wrap ${success ? 'modal-success' : 'modal-fail'}`;
@@ -13,7 +14,9 @@ const Modal = ({content, success, setModal}) => {
                     </p>
                 </div>
                 <div className={buttonClassName}>
-                    <button onClick={() => setModal(false)}>확인</button>
+                    <Link to={"/"}>
+                        <button onClick={() => setModal(false)}>확인</button>
+                    </Link>
                 </div>
             </div>
         </>

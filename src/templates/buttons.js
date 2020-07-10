@@ -46,7 +46,7 @@ const Buttons = () => {
     };
 
     const addKakaoChannel = () => {
-        Kakao.Channel.addChannel({
+        Kakao.Channel.chat({
             channelPublicId: '_MvtSxb'
         });
     };

@@ -3,7 +3,6 @@ import axios from 'axios';
 import './config';
 
 const API_SERVER_HOST = process.env.REACT_APP_API_SERVER_HOST;
-const API_SERVER_PORT = process.env.REACT_APP_API_SERVER_PORT;
 
 export function usePostList(date, page, offset, setCards, setHasMorePosts) {
     useEffect(() => {
@@ -11,7 +10,7 @@ export function usePostList(date, page, offset, setCards, setHasMorePosts) {
         const postDate = [date.year, date.month, day >= 10 ? day : '0' + day].join("-");
         axios({
             method: 'GET',
-            url: `http://${API_SERVER_HOST}:${API_SERVER_PORT}/posts`,
+            url: `https://${API_SERVER_HOST}/posts`,
             params: {
                 _sort: 'score',
                 _order: 'DESC',
@@ -68,7 +67,7 @@ export function useProxy(url, setOg) {
         if (urlValidator.test(url)) {
             axios({
                 method: 'GET',
-                url: `http://${API_SERVER_HOST}:${API_SERVER_PORT}/proxy`,
+                url: `https://${API_SERVER_HOST}/proxy`,
                 params: {
                     url: url
                 }
@@ -114,7 +113,7 @@ export function useCheckDuplicatedUrl(url, setIsDuplicated, setWarnMessage) {
         if (urlValidator.test(url)) {
             axios({
                 method: 'GET',
-                url: `http://${API_SERVER_HOST}:${API_SERVER_PORT}/api/blogs/check`,
+                url: `https://${API_SERVER_HOST}/api/blogs/check`,
                 params: {
                     url: url
                 }
@@ -140,7 +139,7 @@ export function postRegisterForm(url, setModal) {
     if (urlValidator.test(url)) {
         axios({
             method: 'POST',
-            url: `http://${API_SERVER_HOST}:${API_SERVER_PORT}/api/blogreqs`,
+            url: `https://${API_SERVER_HOST}/api/blogreqs`,
             data: {
                 url: url
             }

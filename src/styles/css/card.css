@@ -8,7 +8,7 @@
 
 .card {
     background-color: #FFFFFF;
-    font-family: 'BM HANNA Air OTF';
+    font-family: 'BMHANNAAir';
     box-shadow: 2px 2px 5px #d7d7d7;
     border-radius: 5px;
 }
@@ -167,7 +167,7 @@ body {background: #333333;}
     -webkit-animation: loading-text-opacity 2s linear 0s infinite normal;
     animation: loading-text-opacity 2s linear 0s infinite normal;
     color: #a18dd6;
-    font-family: "BM HANNA Air OTF";
+    font-family: "BMHANNAAir";
     font-size: 10px;
     font-weight: bold;
     margin-top: 45px;

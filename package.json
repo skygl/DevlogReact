@@ -18,7 +18,8 @@
     "react-masonry-component": "^6.2.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "style-loader": "^1.2.1"
+    "style-loader": "^1.2.1",
+    "url-loader": "^4.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

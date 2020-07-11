@@ -1,6 +1,5 @@
 import {useEffect} from "react";
 import axios from 'axios';
-import './config';
 import AlertImage from "../public/alert.svg";
 import LogoImage from "../public/devlog.png";
 

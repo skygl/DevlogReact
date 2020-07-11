@@ -1,6 +1,8 @@
 import {useEffect} from "react";
 import axios from 'axios';
 import './config';
+import AlertImage from "../public/alert.svg";
+import LogoImage from "../public/devlog.png";
 
 const API_SERVER_HOST = process.env.REACT_APP_API_SERVER_HOST;
 
@@ -35,7 +37,7 @@ const parseImage = (html) => {
     if (!!(element = html.querySelector("meta[property='og:image']"))) {
         return element.getAttribute("content");
     }
-    return "/devlog.png";
+    return LogoImage;
 };
 
 const parseTitle = (html) => {
@@ -87,7 +89,7 @@ export function useProxy(url, setOg) {
                         url,
                         title: "올바른 URL을 입력해주세요",
                         description: "",
-                        image: "/alert.svg"
+                        image: AlertImage
                     })
                 })
         } else if (url === "") {
@@ -95,14 +97,14 @@ export function useProxy(url, setOg) {
                 url,
                 title: "URL을 입력해주세요",
                 description: "",
-                image: "/devlog.png"
+                image: LogoImage
             })
         } else {
             setOg({
                 url,
                 title: "올바른 URL을 입력해주세요",
                 description: "",
-                image: "/alert.svg"
+                image: AlertImage
             })
         }
     }, [url, setOg]);
@@ -153,7 +155,7 @@ export function postRegisterForm(url, setModal) {
                 modal.success = false;
                 if (err.response.status === 409) {
                     if (err.response.data.type === 'blog') {
-                       modal.message = '이미 등록된 블로그입니다';
+                        modal.message = '이미 등록된 블로그입니다';
                     } else if (err.response.data.type === 'blogreq') {
                         modal.message = '등록 대기중인 블로그입니다';
                     } else {

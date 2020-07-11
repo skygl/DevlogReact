@@ -1,4 +1,5 @@
 import React from "react";
+import Calendar from "../../../public/calendar.svg";
 import '../../styles/css/date.css';
 
 const DateBlock = ({date, toggleActive}) => {
@@ -10,7 +11,7 @@ const DateBlock = ({date, toggleActive}) => {
                 <div className={"date_title"}>
                     {[year, month, day].join('.')}
                 </div>
-                <img src={"/calendar.svg"} className={"calendar_icon"} alt={"select date from calendar"}/>
+                <img src={Calendar} className={"calendar_icon"} alt={"select date from calendar"}/>
             </button>
         </div>
     )

@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/css/banner.css";
 import {Link} from "react-router-dom";
+import PrayImage from "../../public/pray.png";
 
 const Banner = () => {
     return (
@@ -12,7 +13,7 @@ const Banner = () => {
                             <span>여러분의 블로그를 등록해주세요</span>
                         </div>
                         <div className={"banner_icon"}>
-                            <img src={"/pray.png"} alt={"please register your blog"}/>
+                            <img src={PrayImage} alt={"please register your blog"}/>
                         </div>
                     </div>
                 </div>

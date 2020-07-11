@@ -8,6 +8,7 @@ import debounce from "lodash.debounce";
 import Preview from "../templates/preview";
 import {postRegisterForm, useCheckDuplicatedUrl} from "../useApi";
 import Modal from "../templates/modal";
+import UndoImage from "../../public/undo.svg";
 
 const Register = () => {
     const [fullUrl, setFullUrl] = useState({
@@ -17,7 +18,7 @@ const Register = () => {
     });
 
     const backImageInfo = {
-        src: "/undo.svg",
+        src: UndoImage,
         alt: "back to home"
     };
 

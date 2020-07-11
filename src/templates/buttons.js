@@ -3,6 +3,8 @@ import React, {useState} from "react";
 import Button from "../components/molecules/button";
 import "../styles/css/button.css";
 import {toFit} from "../scroll";
+import TopImage from "../../public/top.svg";
+import QuestionImage from "../../public/question.svg";
 
 const Buttons = () => {
     const innerHeight = window.innerHeight;
@@ -10,12 +12,12 @@ const Buttons = () => {
     const [active, setActive] = useState(false);
 
     const topImageInfo = {
-        src: "/top.svg",
+        src: TopImage,
         alt: "link to top"
     };
 
     const questionImageInfo = {
-        src: "/question.svg",
+        src: QuestionImage,
         alt: "question"
     };
 

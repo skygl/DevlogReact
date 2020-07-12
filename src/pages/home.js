@@ -28,7 +28,6 @@ function Home() {
     const changeDate = ({year, month, day}) => {
         setDate({year, month, day});
         setPage(0);
-        setPosts([]);
     };
 
     return (

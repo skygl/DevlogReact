@@ -74,19 +74,29 @@ export function useProxy(url, setOg) {
                 }
             })
                 .then(res => {
-                    const html = document.createElement('html');
-                    html.innerHTML = res.data;
-                    const image = parseImage(html);
-                    const title = parseTitle(html);
-                    const description = parseDescription(html);
-                    setOg({
-                        url, title, description, image
-                    })
+                    if (res.data.status === 200) {
+                        const html = document.createElement('html');
+                        html.innerHTML = res.data.html;
+                        const image = parseImage(html);
+                        const title = parseTitle(html);
+                        const description = parseDescription(html);
+                        setOg({
+                            url, title, description, image
+                        })
+                    } else {
+                        const title = res.data.status < 500 ? "올바른 URL을 입력해주세요" : "문제가 발생했습니다.";
+                        setOg({
+                            url,
+                            title: title,
+                            description: "",
+                            image: AlertImage
+                        })
+                    }
                 })
                 .catch(() => {
                     setOg({
                         url,
-                        title: "올바른 URL을 입력해주세요",
+                        title: "서버에 문제가 발생했습니다.",
                         description: "",
                         image: AlertImage
                     })

@@ -47,7 +47,6 @@ const Calendar = ({date, changeDate}) => {
     };
 
     const onClick = (current) => {
-        console.log(current.format("YYYY-MM-DD"));
         const [year, month, day] = current.format('YYYY-MM-DD').split('-');
         changeDate({year, month, day});
     };

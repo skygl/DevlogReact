@@ -29,7 +29,6 @@ const DatePicker = ({date, changeDate}) => {
     };
 
     const toggleActive = () => {
-        console.log('click');
         const newActive = !active;
         setActive(newActive);
     };

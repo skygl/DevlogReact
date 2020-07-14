@@ -138,14 +138,18 @@ export function useCheckDuplicatedUrl(url, setIsDuplicated, setWarnMessage) {
                         setWarnMessage('이미 블로그가 등록되어 있습니다')
                     } else if (res.data.type === 'blogreq') {
                         setWarnMessage('등록 대기 중인 블로그입니다')
+                    } else {
+                        setWarnMessage('');
                     }
                     setIsDuplicated(res.data.exists);
                 })
                 .catch(() => {
                     setIsDuplicated(false);
                 })
+        } else {
+            setIsDuplicated(false);
         }
-    }, [setIsDuplicated, url])
+    }, [setWarnMessage, setIsDuplicated, url])
 }
 
 export function postRegisterForm(url, setModal) {

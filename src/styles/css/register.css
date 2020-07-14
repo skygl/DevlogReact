@@ -140,7 +140,7 @@
     display: flex;
     align-items: center;
     border: #d7d7d7 1px solid;
-    margin: 20px 10px 30px;
+    margin: 20px 10px 20px;
     width: calc(100vw - 100px);
     height: calc(33vw - 33px);
     max-width: 402px;
@@ -180,6 +180,16 @@
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
+}
+
+.register_alert {
+    text-align: left;
+    margin: 10px 10px 10px;
+    font-size: 0.8rem;
+}
+
+.register_alert li > span {
+    margin-left: -8px;
 }
 
 /* Mobile Device */

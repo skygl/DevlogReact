@@ -139,6 +139,13 @@ const Register = () => {
                                         </div>
                                     </div>
                                     <Preview url={[fullUrl.prefix, fullUrl.url, fullUrl.suffix].join("")}/>
+                                    <div className={"register_alert"}>
+                                        <li>
+                                            <span>
+                                                feed가 없는 블로그인 경우 요청이 거절될 수 있습니다.
+                                            </span>
+                                        </li>
+                                    </div>
                                 </div>
                                 <div>
                                     <input className={"register_btn"} type={"submit"} value={"등록"}/>

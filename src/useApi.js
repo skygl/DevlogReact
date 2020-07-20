@@ -27,7 +27,7 @@ export function usePostList(date, page, offset, setCards, setHasMorePosts) {
             } else {
                 setCards(cards => [...cards, ...res.data]);
             }
-            setHasMorePosts((page + 1) * offset < res.headers["X-Total-Count"]);
+            setHasMorePosts(() => (page + 1) * offset < res.headers["x-total-count"]);
         })
     }, [date, page, offset, setCards, setHasMorePosts]);
 }

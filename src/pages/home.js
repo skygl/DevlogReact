@@ -5,6 +5,7 @@ import '../styles/css/App.css';
 import DatePicker from "../templates/datePicker";
 import Cards from "../templates/cards";
 import moment from "moment";
+import debounce from "lodash.debounce";
 import Buttons from "../templates/buttons";
 import {usePostList} from "../useApi";
 
@@ -21,9 +22,13 @@ function Home() {
 
     usePostList(date, page, offset, setPosts, setHasMorePosts);
 
-    function loadPosts() {
-        setPage(page + 1);
+    function setNextPage() {
+        if (hasMorePosts) {
+            setPage(page => page + 1);
+        }
     }
+
+    const loadPosts = debounce(setNextPage, 500);
 
     const changeDate = ({year, month, day}) => {
         setDate({year, month, day});

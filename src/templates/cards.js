@@ -11,9 +11,11 @@ const masonryOptions = {
 const Cards = ({cards, onLoadPosts, page, hasMorePosts}) => {
 
     const generateCards = (cards) => {
-        return cards.map(card => {
+        return cards.map((card, index) => {
             return (
-                <Card card={card} key={card.id}/>
+                <React.Fragment key={index}>
+                    <Card card={card}/>
+                </React.Fragment>
             )
         });
     };
@@ -24,6 +26,7 @@ const Cards = ({cards, onLoadPosts, page, hasMorePosts}) => {
                 pageStart={0}
                 loadMore={onLoadPosts}
                 hasMore={hasMorePosts}
+                initialLoad={false}
                 loader={
                     <div className="loading-container" key={page}>
                         <div className="loading"/>

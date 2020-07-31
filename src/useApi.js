@@ -1,5 +1,6 @@
 import {useEffect} from "react";
 import axios from 'axios';
+import moment from "moment";
 import AlertImage from "../public/alert.svg";
 import LogoImage from "../public/devlog.png";
 
@@ -7,8 +8,7 @@ const API_SERVER_HOST = process.env.REACT_APP_API_SERVER_HOST;
 
 export function usePostList(date, page, offset, setCards, setHasMorePosts) {
     useEffect(() => {
-        const day = parseInt(date.day) - 1;
-        const postDate = [date.year, date.month, day >= 10 ? day : '0' + day].join("-");
+        const postDate = moment(`${date.year}-${date.month}-${date.day}`).subtract(1, 'days').format("YYYY-MM-DD");
         axios({
             method: 'GET',
             url: `https://${API_SERVER_HOST}/posts`,

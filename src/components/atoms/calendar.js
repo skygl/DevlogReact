@@ -89,16 +89,14 @@ const Calendar = ({date, changeDate}) => {
                     <tbody>
                     <tr>
                         <td>
-                            {moment(momentDate).subtract(1, 'months').isAfter(firstDate) &&
-                            <Prev date={calendarDate} changeDate={changePrevMonth}/>}
+                            <Prev show={moment(momentDate).subtract(1, 'months').isSameOrAfter(firstDate.startOf('month'))} date={calendarDate} changeDate={changePrevMonth}/>
                         </td>
                         <td>
                             <span
                                 className="calendar_title">{[months[calendarDate.month - 1], calendarDate.year].join(" ")}</span>
                         </td>
                         <td>
-                            {moment(momentDate).add(1, 'months').isBefore(moment()) &&
-                            <Next date={calendarDate} changeDate={changeNextMonth}/>}
+                            <Next show={moment(momentDate).add(1, 'months').isBefore(moment())} date={calendarDate} changeDate={changeNextMonth}/>
                         </td>
                     </tr>
                     </tbody>

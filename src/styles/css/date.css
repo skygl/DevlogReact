@@ -130,6 +130,13 @@ hr {
     vertical-align: 12%;
 }
 
+.calendar_title_table div.prev_date {
+    min-width: 24px;
+}
+
+.calendar_title_table div.next_date {
+    min-width: 24px;
+}
 
 /* Tablet &amp; Desktop Device */
 @media all and (min-width:768px) {
@@ -160,6 +167,14 @@ hr {
         width: 20px;
         margin-bottom: 5px;
         margin-left: 10px;
+    }
+
+    .calendar_title_table div.prev_date {
+        min-width: 30px;
+    }
+
+    .calendar_title_table div.next_date {
+        min-width: 30px;
     }
 
     .calendar_box {
